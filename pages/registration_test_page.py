@@ -54,12 +54,12 @@ class RegisterTest():            # вспомогательные методы �
         email_register = self.browser.find_element(By.CSS_SELECTOR, "#identifierId")
         email_register.send_keys("testwebportalmercedes@gmail.com")
 
-        self.browser.find_element(By.CLASS_NAME, "VfPpkd-vQzf8d").click()
+        self.browser.find_element(By.XPATH, '//*[@id="identifierNext"]/div/button/span').click()
 
         password_register = self.browser.find_element(By.XPATH, '//input[@autocomplete="current-password"]')
         password_register.send_keys("2236332cjkYWT*")
         time.sleep(2)
-        self.browser.find_element(By.CLASS_NAME, "VfPpkd-vQzf8d").click()
+        self.browser.find_element(By.XPATH, '//*[@id="passwordNext"]/div/button/span').click()
 
 
 
