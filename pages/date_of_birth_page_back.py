@@ -41,7 +41,7 @@ class DateBirthPageBack():            # вспомогательные мето�
 
         time.sleep(2)
 
-        checking_date_back = self.browser.find_element(By.CSS_SELECTOR, 'div[class="upmc-list__label upmc-user__text"]').text
+        checking_date_back = self.browser.find_element(By.XPATH, '//div/upmc-birthdate/upmc-card/div/div/div/div/upmc-card-content-inactive/div/div/span').text
         print(checking_date_back)
 
 
