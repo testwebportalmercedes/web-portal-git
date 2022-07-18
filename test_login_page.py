@@ -25,13 +25,13 @@ def test_user_can_edit_name(browser):
     page.go_to_profile_wrapper()
     page._do_after_click_timeout()
 
-    #page.go_to_my_data() не работает
-    page.go_to_my_setting()  #new
+    page.go_to_my_data()
+    #page.go_to_my_setting()  #new
     #page._do_after_click_timeout()
-    page.go_to_profile_wrapper_after_my_data() #new
+    #page.go_to_profile_wrapper_after_my_data() #new
     page._do_after_click_timeout()
-    page.go_to_my_mercedes_me()  #new
-    page.go_to_my_mercedes_me_my_data() #new
+    #page.go_to_my_mercedes_me()  #new
+    #page.go_to_my_mercedes_me_my_data() #new
     page.go_to_editing_request()
     page.editing_request_from_mister_to_madam()
     page.scroll_to_name_and_surename() #скролл к имени
@@ -53,6 +53,7 @@ def test_user_can_edit_name(browser):
     page.should_be_change_name_and_surname_back()
 
 
+
 @pytest.mark.smoke
 def test_user_can_edit_address(browser):
     page = MainPage(browser, link)
@@ -64,13 +65,13 @@ def test_user_can_edit_address(browser):
     page._do_after_click_timeout()
     page.go_to_profile_wrapper()
     page._do_after_click_timeout()
-    page.go_to_my_setting()
-    #page.go_to_my_data()
+    #page.go_to_my_setting()
+    page.go_to_my_data()
 
-    page.go_to_profile_wrapper_after_my_data()
+    #page.go_to_profile_wrapper_after_my_data()
     page._do_after_click_timeout()
-    page.go_to_my_mercedes_me()
-    page.go_to_my_mercedes_me_my_data()
+    #page.go_to_my_mercedes_me()
+    #page.go_to_my_mercedes_me_my_data()
     page.scroll_to_editing_adress()
 
     page.go_to_editing_adress()
@@ -108,13 +109,13 @@ def test_user_can_edit_date_of_birth(browser):
     #page.should_be_message_about_login()
     page._do_after_click_timeout()
     page.go_to_profile_wrapper()
-    page.go_to_my_setting()
+    #page.go_to_my_setting()
     page._do_after_click_timeout()
-    #page.go_to_my_data()
-    page.go_to_profile_wrapper_after_my_data()
+    page.go_to_my_data()
+    #page.go_to_profile_wrapper_after_my_data()
     page._do_after_click_timeout()
-    page.go_to_my_mercedes_me()
-    page.go_to_my_mercedes_me_my_data()
+    #page.go_to_my_mercedes_me()
+    #page.go_to_my_mercedes_me_my_data()
     page.scroll_to_editing_adress()
     page.go_to_editing_date_of_birth()
     page.editing_day()

@@ -43,7 +43,7 @@ class RegisterTest():            # вспомогательные методы �
         self.browser.find_element(By.ID, "59-option-RU").click()
 
         password_register = self.browser.find_element(By.CSS_SELECTOR, "#password")
-        password_register.send_keys("2236332cjkYWT*")
+        password_register.send_keys("1234Ntcn$$")
 
         self.browser.find_element(By.ID, "legaltext0").click()
         self.browser.find_element(By.ID, "legaltext1").click()
@@ -57,7 +57,7 @@ class RegisterTest():            # вспомогательные методы �
         self.browser.find_element(By.XPATH, '//*[@id="identifierNext"]/div/button/span').click()
 
         password_register = self.browser.find_element(By.XPATH, '//input[@autocomplete="current-password"]')
-        password_register.send_keys("2236332cjkYWT*")
+        password_register.send_keys("1234Ntcn$")
         time.sleep(2)
         self.browser.find_element(By.XPATH, '//*[@id="passwordNext"]/div/button/span').click()
 
@@ -85,7 +85,7 @@ class RegisterTest():            # вспомогательные методы �
         time.sleep(2)
 
         password = self.browser.find_element(By.CSS_SELECTOR, '#password')
-        password .send_keys("2236332cjkYWT*")
+        password .send_keys("1234Ntcn$$")
         self.browser.find_element(By.CSS_SELECTOR, '#saveChange').click()
 
     def test_for_test(self):
@@ -148,5 +148,5 @@ class RegisterTest():            # вспомогательные методы �
         time.sleep(2)
 
         password = self.browser.find_element(By.CSS_SELECTOR, '#password')
-        password .send_keys("2236332cjkYWT*")
+        password .send_keys("1234Ntcn$$")
         self.browser.find_element(By.CSS_SELECTOR, '#saveChange').click()

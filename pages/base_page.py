@@ -92,14 +92,14 @@ class BasePage():            # вспомогательные методы дл�
         personal_menu_first = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         profile_form = self.browser.execute_script("return arguments[0].shadowRoot", personal_menu_first)
 
-        personal_menu = profile_form.find_element(By.LINK_TEXT, "Мои данные")
+        personal_menu = profile_form.find_element(By.LINK_TEXT, "Мой профиль")
         personal_menu.click()
 
     def go_to_my_setting(self):
         personal_menu_first = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         profile_form = self.browser.execute_script("return arguments[0].shadowRoot", personal_menu_first)
 
-        personal_menu = profile_form.find_element(By.LINK_TEXT, "Мои настройки")
+        personal_menu = profile_form.find_element(By.LINK_TEXT, "Мой профиль")
         personal_menu.click()
 
 

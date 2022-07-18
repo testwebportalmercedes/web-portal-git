@@ -114,7 +114,7 @@ class EditAdress():
 
         assert subject == "Ленинградская область", (
             "The subject has not changed to Ленинградская область")
-
+ 
 
 
         district = self.browser.find_element(By.XPATH, "//dl/div[7]/dd").text
