@@ -195,11 +195,11 @@ def test_user_can_register1(browser):
     page.go_to_profile_wrapper()
     page.go_to_logon_with_tan()
 
-    browser2 = webdriver.Chrome()
+    browser3 = webdriver.Chrome()
 
-    page1 = MainPage(browser2, link1)
-    browser2.get(link1)
-    browser2.set_window_size(1280, 1280)
+    page1 = MainPage(browser3, link1)
+    browser3.get(link1)
+    browser3.set_window_size(1280, 1280)
     time.sleep(2)
 
     page1.enter_email_password_google()
@@ -208,9 +208,9 @@ def test_user_can_register1(browser):
 
 
     time.sleep(6)
-    cod = browser2.find_element(By.XPATH,
+    cod = browser3.find_element(By.XPATH,
                                     '//*[@id=":2g"]/span').text
-    browser2.close()
+    browser3.close()
     tatcod = browser.find_element(By.CSS_SELECTOR, "#tan1")
     tatcod.send_keys(cod[:6])
     page.enter_tat_cod_and_click()
