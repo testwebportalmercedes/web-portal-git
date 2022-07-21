@@ -131,7 +131,7 @@ def test_user_can_edit_date_of_birth(browser):
     page.save_button_click()
     page.should_be_change_date_of_birth_back()
 
-@pytest.mark.new
+@pytest.mark.register
 def test_user_can_register(browser):
 
     page = MainPage(browser, link)
@@ -180,17 +180,94 @@ def test_user_can_register(browser):
 
     time.sleep(5)
 
-@pytest.mark.new2
-def test_user_can_register2(browser):
+@pytest.mark.register_test
+def test_user_can_register(browser):
+
     page = MainPage(browser, link)
     page.open()
-    page.test_for_test()
-    page.go_to_my_mercedes_me()
-    time.sleep(1)
-    page.go_to_my_mercedes_me_my_data()
-    time.sleep(1)
-    page.test_for_test1()
+    window_before = browser.window_handles[0]
 
+
+    time.sleep(3)
+
+    browser.get("https://www.mercedes-benz.ru")
+    page.cookie_acceptance()
+    page.go_to_profile_wrapper()
+    page.go_to_logon_with_tan()
+
+    browser2 = webdriver.Chrome()
+
+    page1 = MainPage(browser2, link1)
+    browser2.get(link1)
+    browser2.set_window_size(1280, 1280)
+    time.sleep(2)
+
+    page1.enter_email_password_google()
+
+    #page1.go_to_code()
+
+
+    time.sleep(6)
+    cod = browser2.find_element(By.XPATH,
+                                    '//*[@id=":2g"]/span').text
+    browser2.close()
+    tatcod = browser.find_element(By.CSS_SELECTOR, "#tan1")
+    tatcod.send_keys(cod[:6])
+    page.enter_tat_cod_and_click()
+    time.sleep(6)
+    page.cookie_acceptance()
+    page.click_no_car()
+    time.sleep(5)
+    page.go_to_profile_wrapper_after_my_data()
+    page.go_to_my_mercedes_me()
+    page.go_to_my_mercedes_me_my_data()
+    page.move_to_delete_account_and_click()
+    time.sleep(5)
+
+
+
+    browser.close()
+
+    time.sleep(5)
+
+@pytest.mark.new
+def test_checking_menu_links(browser):
+    page = MainPage(browser, link)
+    page.open()
+    page.cookie_acceptance()
+    page.go_to_profile_wrapper()
+    page.go_to_logon_with_email()
+
+    page._do_after_click_timeout()
+    page.go_to_profile_wrapper()
+
+    page._do_after_click_timeout()
+    page.go_to_setting() #Переход в мои настройки
+
+    page._do_after_click_timeout()
+
+
+
+
+
+    #page.go_to_my_car() #переход в мои автомобили
+    #page.checking_go_to_my_car() #проверка перехода в мои автомобили
+    #page._do_after_click_timeout()
+    #page.go_to_profile_wrapper() #клик по иконке меню
+    #page.go_to_my_data()   # переход в мои данные
+    #page.checking_go_to_my_data() #проверка перехода в мои данные работает
+    #page.go_to_back_my_data() #переход обратно работает
+    #page._do_after_click_timeout()
+    #page.go_to_profile_wrapper()  # клик по иконке меню
+    #page.go_to_my_messages() # переход в мои сообщения
+    #page.checking_go_to_my_messages() #проверка перехода в мои сообщения
+    #page.go_to_back_with_my_messages() #переход обратно
+    #page.go_to_profile_wrapper()  # клик по иконке меню
+
+
+
+    #page.checking_go_to_setting() #Проверка перехода в мои настройки
+    #page.checking_configuring_incoming_messages() # проверка настройки входящих сообщений в моих настройках
 if __name__ == "__main__":
     test_user_can_edit_name()
 

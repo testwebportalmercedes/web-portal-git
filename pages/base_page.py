@@ -194,6 +194,26 @@ class BasePage():            # вспомогательные методы дл�
         time.sleep(2)
 
 
+    def go_to_logon_with_tan(self): # Для теста ввода кода
+
+        login_button_wrapper = WebDriverWait(self.browser, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "iam-login-button")))
+        login_button_wrapper.click()
+
+        #login_button_wrapper = self.browser.find_element(By.CSS_SELECTOR, "iam-login-button")
+        #login_button_wrapper.click()
+
+        email_field = self.browser.find_element(By.CSS_SELECTOR, "#username")
+        email_field.send_keys("testwebportalmercedes@gmail.com")
+        submit_button = self.browser.find_element(By.CSS_SELECTOR, "#continue")
+        submit_button.click()
+        time.sleep(2)
+
+
+        enter_with_password_button = self.browser.find_element(By.CSS_SELECTOR, "#login-with-otp")
+        enter_with_password_button.click()
+
+
 
 
 
