@@ -64,3 +64,4 @@ class DataBirthPage():            # вспомогательные методы 
 
         assert "10.10.1999" == checking_date, (
             "The date_of_birth has not changed")
+

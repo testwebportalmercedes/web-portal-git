@@ -181,7 +181,7 @@ def test_user_can_register(browser):
     time.sleep(5)
 
 @pytest.mark.register_test
-def test_user_can_register(browser):
+def test_user_can_register1(browser):
 
     page = MainPage(browser, link)
     page.open()

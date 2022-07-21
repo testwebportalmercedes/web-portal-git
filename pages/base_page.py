@@ -210,7 +210,7 @@ class BasePage():            # вспомогательные методы дл�
         time.sleep(2)
 
 
-        enter_with_password_button = self.browser.find_element(By.CSS_SELECTOR, "#login-with-otp")
+        enter_with_password_button = self.browser.find_element(By.ID, "login-with-otp")
         enter_with_password_button.click()
 
 

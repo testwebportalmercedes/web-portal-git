@@ -123,7 +123,7 @@ class RegisterTest():            # вспомогательные методы �
         enter_with_password_button.click()
 
         input_pass_field = self.browser.find_element(By.CSS_SELECTOR, "#password")
-        input_pass_field.send_keys("2236332cjkYWT*")
+        input_pass_field.send_keys("1234Ntcn$$")
         confirm_button = self.browser.find_element(By.CSS_SELECTOR, "#confirm")
         confirm_button.click()
         time.sleep(7)
