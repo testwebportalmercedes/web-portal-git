@@ -230,7 +230,7 @@ def test_user_can_register1(browser):
 
     time.sleep(5)
 
-@pytest.mark.new
+@pytest.mark.menu
 def test_checking_menu_links(browser):
     page = MainPage(browser, link)
     page.open()
@@ -242,40 +242,66 @@ def test_checking_menu_links(browser):
     page.go_to_profile_wrapper()
 
     page._do_after_click_timeout()
-    page.go_to_setting() #Переход в мои настройки
-
+    page.go_to_my_car() #переход в мои автомобили +
+    page.checking_go_to_my_car() #проверка перехода в мои автомобили +
+    page.go_to_profile_wrapper() #клик по иконке меню +
+    page.go_to_my_data()   # переход в мои данные +
+    page.checking_go_to_my_data() #проверка перехода в мои данные работает +
+    page.go_to_back_my_data() #переход обратно работает+
+    page._do_after_click_timeout()
+    page.go_to_profile_wrapper()  # клик по иконке меню+
+    page.go_to_my_messages() # переход в мои сообщения +
+    page.checking_go_to_my_messages() #проверка перехода в мои сообщения +
+    page.go_to_back_with_my_messages() #переход обратно+
+    page._do_after_click_timeout()
+    page.go_to_profile_wrapper()  # клик по иконке меню+
+    page.go_to_setting() #Переход в мои настройки+
+    page._do_after_click_timeout()
+    page.checking_go_to_setting() #Проверка перехода в мои настройки +
+    page.checking_configuring_incoming_messages()  # проверка настройки входящих сообщений в моих настройках +
+    page.communication_channels() # переход в каналы связи +
+    page.check_go_to_communication_channels() #проверка перехода в каналы связи +
     page._do_after_click_timeout()
 
+    page.units_of_measurement() # переход в еденицы измерения+
+    page.check_go_to_units_of_measurement() #проверка перехода в еденицы измерения+
+    page._do_after_click_timeout()
+    page.connect_terms_of_use() # переход в условия пользования+
+    page.check_go_to_connect_terms_of_use() # проверка перехода в условия пользования
+
+    page.go_to_profile_wrapper()  # клик по иконке меню+
+    page._do_after_click_timeout()
+    page.terms_of_use() #переход в условия пользования из меню
+    page.check_go_to_connect_terms_of_use() # проверка перехода в условия пользования из меню
+    page._do_after_click_timeout()
+    time.sleep(5)
 
 
 
 
-    #page.go_to_my_car() #переход в мои автомобили
-    #page.checking_go_to_my_car() #проверка перехода в мои автомобили
-    #page._do_after_click_timeout()
-    #page.go_to_profile_wrapper() #клик по иконке меню
-    #page.go_to_my_data()   # переход в мои данные
-    #page.checking_go_to_my_data() #проверка перехода в мои данные работает
-    #page.go_to_back_my_data() #переход обратно работает
-    #page._do_after_click_timeout()
-    #page.go_to_profile_wrapper()  # клик по иконке меню
-    #page.go_to_my_messages() # переход в мои сообщения
-    #page.checking_go_to_my_messages() #проверка перехода в мои сообщения
-    #page.go_to_back_with_my_messages() #переход обратно
-    #page.go_to_profile_wrapper()  # клик по иконке меню
 
 
 
-    #page.checking_go_to_setting() #Проверка перехода в мои настройки
-    #page.checking_configuring_incoming_messages() # проверка настройки входящих сообщений в моих настройках
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     test_user_can_edit_name()
 
     #pytest - s test_login_page.py
     #pytest test_login_page.py
 
-    #pytest -s -v -m smoke test_login_page.py
-    #pytest -s -v -m new test_login_page.py
-    #pytest -s -v -m new2 test_login_page.py
+    #pytest -s -vv -m smoke test_login_page.py запуск теста проверки личных данных(смоук)
 
-
+    #pytest -s -vv -m register test_login_page.py запуск теста регистрации
+    #pytest -s -vv -m menu test_login_page.py запуск теста проверки меню
+    #pytest -s -vv -m new test_login_page.py
