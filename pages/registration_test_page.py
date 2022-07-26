@@ -115,7 +115,7 @@ class RegisterTest():            # вспомогательные методы �
 
 
         email_field = self.browser.find_element(By.CSS_SELECTOR, "#username")
-        email_field.send_keys("testwebportalmercedes+1@gmail.com")
+        email_field.send_keys("testwebportalmercedes+2@gmail.com")
         submit_button = self.browser.find_element(By.CSS_SELECTOR, "#continue")
         submit_button.click()
         time.sleep(2)

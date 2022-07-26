@@ -67,6 +67,7 @@ class BasePage():            # вспомогательные методы дл�
 
         email_field = self.browser.find_element(By.CSS_SELECTOR, "#username")
         email_field.send_keys("mbcee.test+2@gmail.com")
+        #email_field.send_keys("testwebportalmercedes+1@gmail.com")
         submit_button = self.browser.find_element(By.CSS_SELECTOR, "#continue")
         submit_button.click()
         time.sleep(2)
@@ -75,6 +76,7 @@ class BasePage():            # вспомогательные методы дл�
 
         input_pass_field = self.browser.find_element(By.CSS_SELECTOR, "#password")
         input_pass_field.send_keys("Ntcn1234$")
+        #input_pass_field.send_keys("1234Ntcn$$")
         confirm_button = self.browser.find_element(By.CSS_SELECTOR, "#confirm")
         confirm_button.click()
         time.sleep(4)
