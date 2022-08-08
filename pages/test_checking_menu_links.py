@@ -17,10 +17,14 @@ class CheckingMenuLinks():            # вспомогательные мето�
         #time.sleep(3)
         menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         profile_form = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
+        menu_my_car1 = profile_form.find_element(By.LINK_TEXT, "Мои автомобили").text
+        assert "Мои автомобили" == menu_my_car1, (
+            "'Мои автомобили в меню' - Текст не совпадает")
+
+        menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
+        profile_form = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
         menu_my_car = profile_form.find_element(By.LINK_TEXT, "Мои автомобили")
         menu_my_car.click()
-
-
 
 
 
@@ -63,6 +67,12 @@ class CheckingMenuLinks():            # вспомогательные мето�
     def go_to_my_messages(self):
 
         menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
+        profile_form = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
+        menu_my_messages1 = profile_form.find_element(By.LINK_TEXT, "Мои сообщения").text
+        assert "Мои сообщения" == menu_my_messages1, (
+            "'Мои сообщения в меню' - Текст не совпадает")
+
+        menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         my_messages = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
 
         menu_my_messages = my_messages.find_element(By.LINK_TEXT, "Мои сообщения")
@@ -89,6 +99,11 @@ class CheckingMenuLinks():            # вспомогательные мето�
 
 
     def go_to_setting(self):
+        menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
+        profile_form = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
+        menu_setting1 = profile_form.find_element(By.LINK_TEXT, "Настройки, конфиденциальность и правовая информаци").text
+        assert "Настройки, конфиденциальность и правовая информаци" == menu_setting1, (
+            "'Настройки, конфиденциальность и правовая информаци в меню' - Текст не совпадает")
 
         menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         my_messages = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
@@ -195,6 +210,12 @@ class CheckingMenuLinks():            # вспомогательные мето�
         #print(back_with_my_messages)
 
     def terms_of_use(self):
+        menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
+        profile_form = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
+        menu_terms_of_use1 = profile_form.find_element(By.LINK_TEXT, "Условия пользования").text
+        assert "Условия пользования" == menu_terms_of_use1, (
+            "'Условия пользования в меню' - Текст не совпадает")
+
         menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         profile_form = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
         menu_terms_of_use = profile_form.find_element(By.LINK_TEXT, "Условия пользования")

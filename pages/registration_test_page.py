@@ -24,7 +24,7 @@ class RegisterTest():            # вспомогательные методы �
     def enter_information_for_register(self):
         time.sleep(1)
         email_register = self.browser.find_element(By.CSS_SELECTOR, "#username")
-        email_register.send_keys("testwebportalmercedes+1@gmail.com")
+        email_register.send_keys("testwebportalmercedes+3@gmail.com")
 
         name_register = self.browser.find_element(By.CSS_SELECTOR, "#firstname")
         name_register.send_keys("Тест")
@@ -55,7 +55,7 @@ class RegisterTest():            # вспомогательные методы �
         email_register.send_keys("testwebportalmercedes@gmail.com")
 
         self.browser.find_element(By.XPATH, '//*[@id="identifierNext"]/div/button/span').click()
-
+        self.browser.implicitly_wait(60)
         password_register = self.browser.find_element(By.XPATH, '//input[@autocomplete="current-password"]')
         password_register.send_keys("1234Ntcn$")
         time.sleep(2)
@@ -115,7 +115,7 @@ class RegisterTest():            # вспомогательные методы �
 
 
         email_field = self.browser.find_element(By.CSS_SELECTOR, "#username")
-        email_field.send_keys("testwebportalmercedes+2@gmail.com")
+        email_field.send_keys("testwebportalmercedes@gmail+3.com")
         submit_button = self.browser.find_element(By.CSS_SELECTOR, "#continue")
         submit_button.click()
         time.sleep(2)
