@@ -70,6 +70,25 @@ class RegisterTest():            # вспомогательные методы �
     def click_no_car(self):
         self.browser.find_element(By.CSS_SELECTOR, '#aem--userWithoutCarBtnLightbox').click()
 
+    def move_to_delete_account_and_click_new(self):
+        cookie_popup_1 = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        # Shadow content trick
+        cookie_form = self.browser.execute_script("return arguments[0].shadowRoot", cookie_popup_1)
+
+        move_to_del_button = cookie_form.find_element(By.CLASS_NAME, 'wb-link.wb-link--standalone.delete-link')
+        self.browser.execute_script("arguments[0].scrollIntoView();", move_to_del_button)
+        time.sleep(2)
+
+        delit = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        delit_button = self.browser.execute_script("return arguments[0].shadowRoot", delit)
+        button = delit_button.find_element(By.CLASS_NAME, 'wb-link.wb-link--standalone.delete-link')
+        button.click()
+
+        time.sleep(2)
+
+        password = self.browser.find_element(By.CSS_SELECTOR, '#password')
+        password .send_keys("1234Ntcn$$")
+        self.browser.find_element(By.CSS_SELECTOR, '#saveChange').click()
 
 
     def move_to_delete_account_and_click(self):

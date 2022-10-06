@@ -159,7 +159,7 @@ def test_user_can_register(browser):
 
     time.sleep(6)
     cod = browser2.find_element(By.XPATH,
-                                    '//*[@id=":2g"]/span').text
+                                    '//*[@id=":2c"]/span').text
     browser2.close()
     tatcod = browser.find_element(By.CSS_SELECTOR, "#tan1")
     tatcod.send_keys(cod[:6])
@@ -168,10 +168,11 @@ def test_user_can_register(browser):
     page.cookie_acceptance()
     page.click_no_car()
     time.sleep(5)
-    page.go_to_profile_wrapper_after_my_data()
-    page.go_to_my_mercedes_me()
-    page.go_to_my_mercedes_me_my_data()
-    page.move_to_delete_account_and_click()
+    page.go_to_profile_wrapper()
+    #page.go_to_profile_wrapper_after_my_data()
+    #page.go_to_my_mercedes_me()
+    page.go_to_my_data()
+    page.move_to_delete_account_and_click_new()
     time.sleep(5)
 
 
@@ -208,8 +209,8 @@ def test_user_can_register1(browser):
 
 
     time.sleep(6)
-    cod = browser3.find_element(By.XPATH,
-                                    '//*[@id=":2g"]/span').text
+    cod = browser3.find_element(By.CSS_SELECTOR,
+                                    '#\:2c > span').text
     browser3.close()
     tatcod = browser.find_element(By.CSS_SELECTOR, "#tan1")
     tatcod.send_keys(cod[:6])
@@ -218,8 +219,11 @@ def test_user_can_register1(browser):
     page.cookie_acceptance()
     page.click_no_car()
     time.sleep(5)
+
+    page.go_to_profile_wrapper()
+    time.sleep(4)
     page.go_to_profile_wrapper_after_my_data()
-    page.go_to_my_mercedes_me()
+    #page.go_to_my_mercedes_me()
     page.go_to_my_mercedes_me_my_data()
     page.move_to_delete_account_and_click()
     time.sleep(5)
