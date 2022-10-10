@@ -71,13 +71,14 @@ class RegisterTest():            # вспомогательные методы �
         self.browser.find_element(By.CSS_SELECTOR, '#aem--userWithoutCarBtnLightbox').click()
 
     def move_to_delete_account_and_click_new(self):
+        time.sleep(4)
         cookie_popup_1 = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
         # Shadow content trick
         cookie_form = self.browser.execute_script("return arguments[0].shadowRoot", cookie_popup_1)
-
-        move_to_del_button = cookie_form.find_element(By.CLASS_NAME, 'wb-link.wb-link--standalone.delete-link')
+        time.sleep(5)
+        move_to_del_button = cookie_form.find_element(By.CLASS_NAME, 'wb-margin-bottom-xxs.wb-type-copy-tertiary')
         self.browser.execute_script("arguments[0].scrollIntoView();", move_to_del_button)
-        time.sleep(2)
+        time.sleep(4)
 
         delit = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
         delit_button = self.browser.execute_script("return arguments[0].shadowRoot", delit)

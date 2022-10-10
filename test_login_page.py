@@ -171,6 +171,7 @@ def test_user_can_register(browser):
     page.go_to_profile_wrapper()
     #page.go_to_profile_wrapper_after_my_data()
     #page.go_to_my_mercedes_me()
+    time.sleep(4)
     page.go_to_my_data()
     page.move_to_delete_account_and_click_new()
     time.sleep(5)
