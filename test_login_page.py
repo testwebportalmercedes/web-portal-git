@@ -251,14 +251,19 @@ def test_checking_menu_links(browser):
     page.checking_go_to_my_car() #проверка перехода в мои автомобили +
     page.go_to_profile_wrapper() #клик по иконке меню +
     page.go_to_my_data()   # переход в мои данные +
-    page.checking_go_to_my_data() #проверка перехода в мои данные работает +
-    page.go_to_back_my_data() #переход обратно работает+
-    page._do_after_click_timeout()
+    page.checking_go_to_my_data() #проверка перехода в мои данные работает ++
+    page.go_to_adress()           #новый адресс +
+    page.go_to_entry_and_security()         #новый вход и безопасность +
+
+
+    #page.go_to_back_my_data() #переход обратно работает+
+    #page._do_after_click_timeout()
     page.go_to_profile_wrapper()  # клик по иконке меню+
     page.go_to_my_messages() # переход в мои сообщения +
-    page.checking_go_to_my_messages() #проверка перехода в мои сообщения +
-    page.go_to_back_with_my_messages() #переход обратно+
+    page.checking_go_to_my_messages_new() #проверка перехода в мои сообщения новая +
     page._do_after_click_timeout()
+    #page.go_to_back_with_my_messages() #переход обратно+
+    #page._do_after_click_timeout()
     page.go_to_profile_wrapper()  # клик по иконке меню+
     page.go_to_setting() #Переход в мои настройки+
     page._do_after_click_timeout()

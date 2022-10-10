@@ -46,22 +46,63 @@ class CheckingMenuLinks():            # вспомогательные мето�
         back_my_data = self.browser.find_element(By.CLASS_NAME, "aem--logo__link")
         back_my_data.click()
 
-    def checking_go_to_my_data(self):
+    def checking_go_to_my_data(self): # Проверка мой профиль-Данные учетной записи
         time.sleep(5)
-        iframe = self.browser.find_element(By.CSS_SELECTOR, '#upmc-cont')
-        self.browser.switch_to.frame(iframe)
-        time.sleep(1)
-        checking_go_to_my_data = WebDriverWait(self.browser, 5).until(
-            EC.element_to_be_clickable((By.CLASS_NAME, "wb-type-heading-l.upmc-headline"))).text
-        time.sleep(1)
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+        checking_go_to_my_data = shadow_root1.find_element(By.CSS_SELECTOR, '#title').text
+        # time.sleep(5)
+        # iframe = self.browser.find_element(By.CSS_SELECTOR, '#upmc-cont')
+        # self.browser.switch_to.frame(iframe)
+        # time.sleep(1)
+        # checking_go_to_my_data = WebDriverWait(self.browser, 5).until(
+        #     EC.element_to_be_clickable((By.CLASS_NAME, "wb-type-heading-l.upmc-headline"))).text
+        # time.sleep(1)
         print(checking_go_to_my_data)
 
-        assert checking_go_to_my_data == "Мой профиль Mercedes me", (
-            "'Мой профиль Mercedes me' - Текст не совпадает")
+        assert checking_go_to_my_data == "Данные учетной записи", (
+            "'Данные учетной записи' - Текст не совпадает")
 
-        self.browser.switch_to.default_content()
+        #self.browser.switch_to.default_content()
+
+    def go_to_adress(self): # Переход в адрес и проверка
+        root1 = self.browser.find_element(By.CSS_SELECTOR, 'mmu-settings-wrapper')
+        shadow_root1 = self.browser.execute_script('return arguments[0].shadowRoot', root1)
+        # time.sleep(3)
+        shadow_root1.find_element(By.CSS_SELECTOR, '#mmu-left-menu > wb-subnavigation-item:nth-child(2) > sw-router-link').click()
+        time.sleep(3)
+        root2 = self.browser.find_element(By.CSS_SELECTOR, 'mmu-settings-wrapper')
+        shadow_root2 = self.browser.execute_script('return arguments[0].shadowRoot', root2)
+        time.sleep(3)
+        #adress1 = shadow_root2.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section:nth-child(2)').text
+        #adress1 = shadow_root2.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section:nth-child(2) > div').text
+        adress1 = shadow_root2.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section:nth-child(2) > div > div').text
+
+        time.sleep(3)
 
 
+        print(adress1[0:6])
+
+        assert  "Адреса" == adress1[0:6], (
+            "'Адреса' - Текст не совпадает")
+
+    def go_to_entry_and_security(self): # Переход во вход и безопасность и проверка
+        root1 = self.browser.find_element(By.CSS_SELECTOR, 'mmu-settings-wrapper')
+        shadow_root1 = self.browser.execute_script('return arguments[0].shadowRoot', root1)
+        time.sleep(3)
+        shadow_root1.find_element(By.CSS_SELECTOR, '#mmu-left-menu > wb-subnavigation-item:nth-child(3) > sw-router-link').click()
+
+        root1 = self.browser.find_element(By.CSS_SELECTOR, 'mmu-settings-wrapper')
+        shadow_root1 = self.browser.execute_script('return arguments[0].shadowRoot', root1)
+        time.sleep(3)
+        entry_and_security = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section:nth-child(3) > div > div').text
+        time.sleep(3)
+
+
+        print(entry_and_security[0:19])
+
+        assert  "Вход и безопасность" == entry_and_security[0:19], (
+            "'Вход и безопасность' - Текст не совпадает")
 
 
     def go_to_my_messages(self):
@@ -79,19 +120,23 @@ class CheckingMenuLinks():            # вспомогательные мето�
         menu_my_messages.click()
 
 
-    def checking_go_to_my_messages(self):
+    # def checking_go_to_my_messages(self):
+    #
+    #     iframe = self.browser.find_element(By.ID, 'cmic-reachme-cont')
+    #     self.browser.switch_to.frame(iframe)
+    #
+    #     my_messages = WebDriverWait(self.browser, 5).until(
+    #         EC.element_to_be_clickable((By.CLASS_NAME, "wb-type-heading-m"))).text
+    #     time.sleep(2)
+    #     print(my_messages)
+    #     assert my_messages == "Мои сообщения", (
+    #         "'Мои сообщения' - Текст не совпадает")
+    #
+    #     self.browser.switch_to.default_content()
+    def checking_go_to_my_messages_new(self):
+        checking_go_to_my = self.browser.find_element(By.CLASS_NAME, "cmic-inbox-2df__messages__container")
+        checking_go_to_my.click()
 
-        iframe = self.browser.find_element(By.ID, 'cmic-reachme-cont')
-        self.browser.switch_to.frame(iframe)
-
-        my_messages = WebDriverWait(self.browser, 5).until(
-            EC.element_to_be_clickable((By.CLASS_NAME, "wb-type-heading-m"))).text
-        time.sleep(2)
-        print(my_messages)
-        assert my_messages == "Мои сообщения", (
-            "'Мои сообщения' - Текст не совпадает")
-
-        self.browser.switch_to.default_content()
 
     def go_to_back_with_my_messages(self):
         back_with_my_messages = self.browser.find_element(By.CSS_SELECTOR, "body > header > nav > div.aem--headerMainNavigation__base > div > div > ul > div > a")
@@ -101,14 +146,14 @@ class CheckingMenuLinks():            # вспомогательные мето�
     def go_to_setting(self):
         menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         profile_form = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
-        menu_setting1 = profile_form.find_element(By.LINK_TEXT, "Настройки, конфиденциальность и правовая информаци").text
-        assert "Настройки, конфиденциальность и правовая информаци" == menu_setting1, (
-            "'Настройки, конфиденциальность и правовая информаци в меню' - Текст не совпадает")
+        menu_setting1 = profile_form.find_element(By.LINK_TEXT, "Настройки, конфиденциальность, правовая информация").text
+        assert "Настройки, конфиденциальность, правовая информация" == menu_setting1, (
+            "'Настройки, конфиденциальность, правовая информация' - Текст не совпадает")
 
         menu_shadowRoot = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         my_messages = self.browser.execute_script("return arguments[0].shadowRoot", menu_shadowRoot)
         time.sleep(1)
-        menu_setting = my_messages.find_element(By.LINK_TEXT, "Настройки, конфиденциальность и правовая информаци")
+        menu_setting = my_messages.find_element(By.LINK_TEXT, "Настройки, конфиденциальность, правовая информация")
         menu_setting.click()
 
 
