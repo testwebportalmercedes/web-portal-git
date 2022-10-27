@@ -32,25 +32,33 @@ def test_user_can_edit_name(browser):
     page._do_after_click_timeout()
     #page.go_to_my_mercedes_me()  #new
     #page.go_to_my_mercedes_me_my_data() #new
-    page.go_to_editing_request()
-    page.editing_request_from_mister_to_madam()
-    page.scroll_to_name_and_surename() #скролл к имени
-    page.editing_degree()
-    page.editing_name()
-    page.editing_surname()
-    page.move_to_save_button_and_click()
-    page.should_be_change_name_and_surname()
+    page._do_after_click_timeout()
+    page.go_to_editing_request_new() #++
+    page.editing_request_from_mister_to_madam_new()  #++
+    page.editing_name_new()
+    page.editing_surename_new()
 
-    page.go_to_editing_request_after_verification()
-    page.editing_request_from_madam_to_mister_back()
-    page.scroll_to_name_and_surename()
-    page.editing_degree_back()
-    page.editing_name_back()
-    page.editing_surname_back()
+    page.scroll_to_surename_and_save()
+    page.editing_data_birthday_new()
+    page.click_save_new()
+    page.check_save_new()
 
-    page.move_to_save_button_and_click()
+    page.scroll_to_profile_wrapper()
+    # page.go_to_profile_wrapper()
+    # page._do_after_click_timeout()
+    # page.check_name_and_surename()
+    page._do_after_click_timeout()
+    page.go_to_editing_request_new_back()
+    page.editing_request_from_mister_to_madam_new_back()
+    page.editing_name_new_back()
+    page.editing_surename_new_back()
+    page.scroll_to_surename_and_save()
+    page.editing_data_birthday_new_back()
+    page._do_after_click_timeout()
+    page.click_save_new()
+    page.check_save_new()
 
-    page.should_be_change_name_and_surname_back()
+
 
 
 
@@ -65,41 +73,87 @@ def test_user_can_edit_address(browser):
     page._do_after_click_timeout()
     page.go_to_profile_wrapper()
     page._do_after_click_timeout()
-    #page.go_to_my_setting()
+
     page.go_to_my_data()
-
-    #page.go_to_profile_wrapper_after_my_data()
+    #page.go_to_my_setting()  #new
+    #page._do_after_click_timeout()
+    #page.go_to_profile_wrapper_after_my_data() #new
     page._do_after_click_timeout()
-    #page.go_to_my_mercedes_me()
-    #page.go_to_my_mercedes_me_my_data()
-    page.scroll_to_editing_adress()
-
-    page.go_to_editing_adress()
+    #page.go_to_my_mercedes_me()  #new
+    #page.go_to_my_mercedes_me_my_data() #new
     page._do_after_click_timeout()
+    page.go_to_editing_address_page() #
+    page.check_page_address()
+    page._do_after_click_timeout()
+    page.editing_post_index_new()
+    page.editing_province()
+    page.scroll_to_postindex()
+    page.editing_city()
     page.editing_street()
-    page.scroll_to_house()
-    page.editing_house()
-    page.editing_post_index()
-    page.editing_town()
-    page.subject()
-    page.editing_District()
-    page.save_button_and_click_after_edit_adress()
-    page.scroll_to_editing_adress_after_saving_change()
-    page.should_be_change_adress()
-    page.go_to_editing_adress_after_changes_and_checks()
+    page.editing_additional_street()
+    page.editing_number_home()
+    page.click_save_address_new()
 
-    page.editing_street_back()
-    page.scroll_to_house()
-    page.editing_house_back()
+    page.check_save_address_new()
+    page._do_after_click_timeout()
+    page.scroll_to_profile_wrapper()
     page.editing_post_index_back()
-    page.editing_town_back()
-    page.subject_back()
-    page.editing_District_back()
-    page.save_button_and_click_after_edit_adress()
-    page.scroll_to_editing_adress_after_saving_change()
-    page.should_be_change_adress_back()
+    page.editing_province_back()
+    page.scroll_to_postindex()
+    page.editing_city_back()
+    page.editing_street_back()
+    page.editing_additional_street_back()
+    page.editing_number_home_back()
+    page._do_after_click_timeout()
+    page.click_save_address_new()
 
-@pytest.mark.smoke
+    page.check_save_address_new()
+    page._do_after_click_timeout()
+
+    # page = MainPage(browser, link)
+    # page.open()
+    # page.cookie_acceptance()
+    # page.go_to_profile_wrapper()
+    # page.go_to_logon_with_email()
+    # #page.should_be_message_about_login()
+    # page._do_after_click_timeout()
+    # page.go_to_profile_wrapper()
+    # page._do_after_click_timeout()
+    # #page.go_to_my_setting()
+    # page.go_to_my_data()
+    #
+    # #page.go_to_profile_wrapper_after_my_data()
+    # page._do_after_click_timeout()
+    # #page.go_to_my_mercedes_me()
+    # #page.go_to_my_mercedes_me_my_data()
+    # page.scroll_to_editing_adress()
+    #
+    # page.go_to_editing_adress()
+    # page._do_after_click_timeout()
+    # page.editing_street()
+    # page.scroll_to_house()
+    # page.editing_house()
+    # page.editing_post_index()
+    # page.editing_town()
+    # page.subject()
+    # page.editing_District()
+    # page.save_button_and_click_after_edit_adress()
+    # page.scroll_to_editing_adress_after_saving_change()
+    # page.should_be_change_adress()
+    # page.go_to_editing_adress_after_changes_and_checks()
+    #
+    # page.editing_street_back()
+    # page.scroll_to_house()
+    # page.editing_house_back()
+    # page.editing_post_index_back()
+    # page.editing_town_back()
+    # page.subject_back()
+    # page.editing_District_back()
+    # page.save_button_and_click_after_edit_adress()
+    # page.scroll_to_editing_adress_after_saving_change()
+    # page.should_be_change_adress_back()
+
+#@pytest.mark.smoke
 def test_user_can_edit_date_of_birth(browser):
     page = MainPage(browser, link)
     page.open()
@@ -252,7 +306,7 @@ def test_checking_menu_links(browser):
     page.go_to_profile_wrapper() #клик по иконке меню +
     page.go_to_my_data()   # переход в мои данные +
     page.checking_go_to_my_data() #проверка перехода в мои данные работает ++
-    page.go_to_adress()           #новый адресс +
+    page.go_to_adress()           #переход в новый адресс +
     page.go_to_entry_and_security()         #новый вход и безопасность +
 
 

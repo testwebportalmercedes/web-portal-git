@@ -1,6 +1,8 @@
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 import pytest
 from selenium.webdriver.chrome.service import Service
@@ -55,6 +57,12 @@ class BasePage():            # вспомогательные методы дл�
         profile_image.click()
         time.sleep(1)
 
+    def scroll_to_profile_wrapper(self):
+        profile_wrapper = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
+        profile_form = self.browser.execute_script("return arguments[0].shadowRoot", profile_wrapper)
+
+        profile_image = profile_form.find_element(By.CSS_SELECTOR, "div.owc-header__item-profile")
+        self.browser.execute_script("arguments[0].scrollIntoView();", profile_image)
 
     def go_to_logon_with_email(self):
 
@@ -136,6 +144,22 @@ class BasePage():            # вспомогательные методы дл�
         time.sleep(2)
         button.click()
 
+    def go_to_editing_request_new(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        request = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(2) > wb-select-control > wb-select > select > option:nth-child(3)')
+        request.click()
+
+    def go_to_editing_request_new_back(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        request = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(2) > wb-select-control > wb-select > select > option:nth-child(2)')
+        request.click()
+
+
+
 
 
 
@@ -144,10 +168,139 @@ class BasePage():            # вспомогательные методы дл�
 
         self.browser.execute_script("arguments[0].click();", button)
 
+    def editing_request_from_mister_to_madam_new(self):  #работает
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section:nth-child(1) > div > section:nth-child(2) > form > div:nth-child(1) > wb-select-control > wb-select > select > option:nth-child(3)')
+        name.click()
+
+    def editing_request_from_mister_to_madam_new_back(self):  #работает
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section:nth-child(1) > div > section:nth-child(2) > form > div:nth-child(1) > wb-select-control > wb-select > select > option:nth-child(2)')
+        name.click()
+
+
     def scroll_to_name_and_surename(self):
         move_to_editing_name_and_surename = self.browser.find_element(By.XPATH, '//label[text()="Уч. звание, степень"]')
 
         self.browser.execute_script("arguments[0].scrollIntoView();", move_to_editing_name_and_surename)
+
+    def scroll_to_surename_and_save(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        scroll_to_surename_and_sav = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(4) > wb-input-control > wb-input > label')
+        self.browser.execute_script("arguments[0].scrollIntoView();", scroll_to_surename_and_sav)
+
+    def editing_name_new(self):
+
+        for i in range(5):
+
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(3) > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(3) > wb-input-control > wb-input > input')
+        name.send_keys('Игорь')
+
+    def editing_name_new_back(self):
+
+        for i in range(5):
+
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(3) > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(3) > wb-input-control > wb-input > input')
+        name.send_keys('Иван')
+
+    def editing_surename_new(self):
+
+        for i in range(5):
+
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(4) > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(4) > wb-input-control > wb-input > input')
+        name.send_keys('Норин')
+
+    def editing_surename_new_back(self):
+
+        for i in range(5):
+
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(4) > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        name = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(4) > wb-input-control > wb-input > input')
+        name.send_keys('Тест')
+
+    def editing_data_birthday_new(self):
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(5) > wb-input-control > wb-input > input')
+        data.send_keys('12061995')
+
+    def editing_data_birthday_new_back(self):
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view > section > div > section:nth-child(2) > form > div:nth-child(5) > wb-input-control > wb-input > input')
+        data.send_keys('05031990')
+
+    def click_save_new(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        shadow_root1.find_element(By.CSS_SELECTOR, '#account-info-save-btn').click()
+
+    def check_save_new(self):
+        time.sleep(4)
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        button = WebDriverWait(shadow_root1, timeout=10).until(lambda d: d.find_element
+                (By.CSS_SELECTOR, "wb-notification-host > wb-notification > wb-notification-content")).text
+        print(button)
+        assert "Изменения сохранены." == button, (
+            "Изменения не были сохранены.")
+
+    def check_name_and_surename(self):
+        personal_menu_first = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
+        profile_form = self.browser.execute_script("return arguments[0].shadowRoot", personal_menu_first)
+        name = profile_form.find_element(By.CSS_SELECTOR, 'header > div > nav.owc-header__top > div.owc-header__top-menu-tools > div.owc-header__item-container > div > div > div > owc-header-secondary-flyout > div > div > div.owc-header-mme__headline').text
+        print(name)
+        assert "Здравствуйте, Игорь Норин" == name, (
+            "Имя не совпадает.")
 
     def editing_degree(self):
         self.browser.find_element(By.CLASS_NAME, "selectize-input").click()
@@ -187,6 +340,8 @@ class BasePage():            # вспомогательные методы дл�
         print(checking_change)
 
 
+
+
         assert "Госпожа Профессор Дарья Тестович" == checking_change, (
             "The status of the request and name has not changed")
 
@@ -214,9 +369,183 @@ class BasePage():            # вспомогательные методы дл�
         submit_button2 = self.browser.find_element(By.CLASS_NAME, "ui.fluid.basic.button")
         submit_button2.click()
 
+    # Второе меню
+    def go_to_editing_address_page(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        shadow_root1.find_element(By.CSS_SELECTOR, '#mmu-left-menu > wb-subnavigation-item:nth-child(2) > sw-router-link').click()
+
+    def check_page_address(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+        time.sleep(5)
+        text_address = shadow_root1.find_element(By.CSS_SELECTOR, '#main-router-view > div > sw-router-view').text
+        print(text_address[0:6])
+
+        assert "Адреса" == text_address[0:6], (
+            "страница не Адреса")
+
+    def editing_post_index_new(self):
+        for i in range(6):
+
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(2) > div > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
 
 
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(2) > div > wb-input-control > wb-input > input')
+        data.send_keys('777777')
+
+    def editing_post_index_back(self):
+        for i in range(6):
+
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(2) > div > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
 
 
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
 
+        data = shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(2) > div > wb-input-control > wb-input > input')
+        data.send_keys('000000')
 
+    def editing_province(self):
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+        shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(3) > div > wb-select-control > wb-select > select > option:nth-child(3)').click()
+
+    def editing_province_back(self):
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+        shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(3) > div > wb-select-control > wb-select > select > option:nth-child(2)').click()
+
+    def scroll_to_postindex(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        scroll_to_postindex = shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(2) > div > wb-input-control > wb-input > input')
+        self.browser.execute_script("arguments[0].scrollIntoView();", scroll_to_postindex)
+
+    def editing_city(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+        shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(4) > div > wb-select-control > wb-select > select > option:nth-child(2)').click()
+
+    def editing_city_back(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+        shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(4) > div > wb-select-control > wb-select > select > option:nth-child(521)').click()
+
+    def editing_street(self):
+
+        for i in range(7):
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            shadow_root1.find_element(By.CSS_SELECTOR,
+                                          '#address-form > div:nth-child(5) > div > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR,
+                                             '#address-form > div:nth-child(5) > div > wb-input-control > wb-input > input')
+        data.send_keys('Первая')
+
+    def editing_street_back(self):
+
+        for i in range(7):
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            shadow_root1.find_element(By.CSS_SELECTOR,
+                                          '#address-form > div:nth-child(5) > div > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR,
+                                             '#address-form > div:nth-child(5) > div > wb-input-control > wb-input > input')
+        data.send_keys('Вторая')
+
+    def editing_additional_street(self):
+
+        for i in range(7):
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            shadow_root1.find_element(By.CSS_SELECTOR,
+                                          '#address-form > div:nth-child(6) > div > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR,
+                                             '#address-form > div:nth-child(6) > div > wb-input-control > wb-input > input')
+        data.send_keys('Пятая')
+
+    def editing_additional_street_back(self):
+
+        for i in range(7):
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            shadow_root1.find_element(By.CSS_SELECTOR,
+                                          '#address-form > div:nth-child(6) > div > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR,
+                                             '#address-form > div:nth-child(6) > div > wb-input-control > wb-input > input')
+        data.send_keys('Шестая')
+
+    def editing_number_home(self):
+
+        for i in range(5):
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            shadow_root1.find_element(By.CSS_SELECTOR,
+                                          '#address-form > div:nth-child(7) > div > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR,
+                                             '#address-form > div:nth-child(7) > div > wb-input-control > wb-input > input')
+        data.send_keys('99')
+
+    def editing_number_home_back(self):
+
+        for i in range(5):
+            shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+            shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+            shadow_root1.find_element(By.CSS_SELECTOR,
+                                          '#address-form > div:nth-child(7) > div > wb-input-control > wb-input > input').send_keys(Keys.BACK_SPACE)
+
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        data = shadow_root1.find_element(By.CSS_SELECTOR,
+                                             '#address-form > div:nth-child(7) > div > wb-input-control > wb-input > input')
+        data.send_keys('00')
+
+    def click_save_address_new(self):
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        shadow_root1.find_element(By.CSS_SELECTOR, '#address-form > div:nth-child(8) > button').click()
+
+    def check_save_address_new(self):
+        time.sleep(4)
+        shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
+        shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
+
+        button = WebDriverWait(shadow_root1, timeout=10).until(lambda d: d.find_element
+                (By.CSS_SELECTOR, "wb-notification-host > wb-notification > wb-notification-content")).text
+        print(button)
+        assert "Изменения сохранены." == button, (
+            "Изменения не были сохранены.")
