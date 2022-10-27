@@ -110,6 +110,8 @@ def test_user_can_edit_address(browser):
     page.check_save_address_new()
     page._do_after_click_timeout()
 
+
+
     # page = MainPage(browser, link)
     # page.open()
     # page.cookie_acceptance()
