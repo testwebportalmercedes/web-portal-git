@@ -7,6 +7,7 @@ import configparser
 from selenium.webdriver.common.by import By
 import time
 
+
 class EditAdressBack():
 
     def __init__(self, browser, url, timeout=15):
@@ -16,25 +17,17 @@ class EditAdressBack():
 
     def go_to_editing_adress_after_changes_and_checks(self):
         time.sleep(2)
-
-        # self.browser.find_element(By.CSS_SELECTOR, "h4 > owm-svg > span > svg").click()
         button = WebDriverWait(self.browser, 5).until(
             EC.element_to_be_clickable
             ((By.CSS_SELECTOR, "upmc-address > upmc-card > div > div > h4 > owm-svg > span > svg")))
         time.sleep(2)
         button.click()
 
-
-
     def editing_street_back(self):
         self.browser.find_element(By.CSS_SELECTOR, '#upmc-STREET').clear()
         time.sleep(2)
         street = self.browser.find_element(By.CSS_SELECTOR, '#upmc-STREET')
         street.send_keys("Ленинградский проспект")
-
-    #def scroll_to_house(self):
-        #move_to_house = self.browser.find_element(By.CSS_SELECTOR, "#upmc-HOUSE_NUMBER")
-        #self.browser.execute_script("arguments[0].scrollIntoView();", move_to_house)
 
     def editing_house_back(self):
         self.browser.find_element(By.CSS_SELECTOR, '#upmc-HOUSE_NUMBER').clear()
@@ -57,7 +50,6 @@ class EditAdressBack():
 
     def subject_back(self):
         self.browser.find_element(By.XPATH, '//*[@id="upmc-PROVINCE"]/div[1]').click()
-
         street = self.browser.find_element(By.XPATH, '//*[@id="upmc-PROVINCE"]/div[2]/div/div/div[43]/div')
         street.click()
 
@@ -66,14 +58,6 @@ class EditAdressBack():
         time.sleep(2)
         street = self.browser.find_element(By.CSS_SELECTOR, '#upmc-ADDITIONAL_ADDRESS_LINE_1')
         street.send_keys("Москва")
-
-    #def save_button_and_click_after_edit_adress(self):
-        #button = self.browser.find_element(By.XPATH, "//form/div[2]/button[2]")
-        #self.browser.execute_script("arguments[0].click();", button)
-
-    #def scroll_to_editing_adress_after_saving_change(self):
-        #move_to_editing_adress = self.browser.find_element(By.XPATH, "//span[text()='Адрес']")
-        #self.browser.execute_script("arguments[0].scrollIntoView();", move_to_editing_adress)
 
     def should_be_change_adress_back(self):
         street = self.browser.find_element(By.XPATH, "//dl/div[2]/dd").text
@@ -105,4 +89,3 @@ class EditAdressBack():
 
         assert district == "Москва", (
             "The district has not changed back to Москва")
-
