@@ -146,16 +146,16 @@ class BasePage():  # вспомогательные методы для рабо
                                          '#main-router-view > div > sw-router-view > section:nth-child(1)')
         name.click()
 
-    def scroll_to_name_and_surename(self):
-        move_to_editing_name_and_surename = self.browser.find_element(By.XPATH, '//label[text()="Уч. звание, степень"]')
-        self.browser.execute_script("arguments[0].scrollIntoView();", move_to_editing_name_and_surename)
+    def scroll_to_name_and_surname(self):
+        move_to_editing_name_and_surname = self.browser.find_element(By.XPATH, '//label[text()="Уч. звание, степень"]')
+        self.browser.execute_script("arguments[0].scrollIntoView();", move_to_editing_name_and_surname)
 
-    def scroll_to_surename_and_save(self):
+    def scroll_to_surname_and_save(self):
         shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
         shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
-        scroll_to_surename_and_sav = shadow_root1.find_element(By.CSS_SELECTOR,
+        scroll_to_surname_and_sav = shadow_root1.find_element(By.CSS_SELECTOR,
                                                                '#main-router-view')
-        self.browser.execute_script("arguments[0].scrollIntoView();", scroll_to_surename_and_sav)
+        self.browser.execute_script("arguments[0].scrollIntoView();", scroll_to_surname_and_sav)
 
     def editing_name_new(self):
 
@@ -186,7 +186,7 @@ class BasePage():  # вспомогательные методы для рабо
                                          '#main-router-view > div')
         name.send_keys('Иван')
 
-    def editing_surename_new(self):
+    def editing_surname_new(self):
         for i in range(5):
             shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
             shadow_root1 = self.browser.execute_script("return arguments[0].shadowRoot", shadow_root)
@@ -200,7 +200,7 @@ class BasePage():  # вспомогательные методы для рабо
                                          '#main-router-view > div > sw-router-view')
         name.send_keys('Норин')
 
-    def editing_surename_new_back(self):
+    def editing_surname_new_back(self):
 
         for i in range(5):
             shadow_root = self.browser.find_element(By.CSS_SELECTOR, "mmu-settings-wrapper")
@@ -246,7 +246,7 @@ class BasePage():  # вспомогательные методы для рабо
         assert "Изменения сохранены." == button, (
             "Изменения не были сохранены.")
 
-    def check_name_and_surename(self):
+    def check_name_and_surname(self):
         personal_menu_first = self.browser.find_element(By.CSS_SELECTOR, "owc-header")
         profile_form = self.browser.execute_script("return arguments[0].shadowRoot", personal_menu_first)
         name = profile_form.find_element(By.CSS_SELECTOR,

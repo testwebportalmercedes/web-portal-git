@@ -28,7 +28,7 @@ class DataBirthPage():  # вспомогательные методы для р�
         street = self.browser.find_element(By.XPATH, '//select[@autocomplete="bday-day"]')
         street.send_keys("10")
 
-    def editing_mounths(self):
+    def editing_months(self):
         self.browser.find_element(By.XPATH, '//select[@autocomplete="bday-month"]').click()
         street = self.browser.find_element(By.XPATH, '//select[@autocomplete="bday-month"]')
         street.send_keys("10")

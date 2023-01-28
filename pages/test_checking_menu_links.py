@@ -51,7 +51,7 @@ class CheckingMenuLinks():  # вспомогательные методы для
 
         # self.browser.switch_to.default_content()
 
-    def go_to_adress(self):  # Переход в адрес и проверка
+    def go_to_address(self):  # Переход в адрес и проверка
         root1 = self.browser.find_element(By.CSS_SELECTOR, 'mmu-settings-wrapper')
         shadow_root1 = self.browser.execute_script('return arguments[0].shadowRoot', root1)
         # time.sleep(3)

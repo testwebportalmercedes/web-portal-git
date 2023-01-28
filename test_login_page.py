@@ -29,8 +29,8 @@ def test_user_can_edit_name(browser):
     page.go_to_editing_request_new()
     page.editing_request_from_mister_to_madam_new()
     page.editing_name_new()
-    page.editing_surename_new()
-    page.scroll_to_surename_and_save()
+    page.editing_surname_new()
+    page.scroll_to_surname_and_save()
     page.editing_data_birthday_new()
     page.click_save_new()
     page.check_save_new()
@@ -39,8 +39,8 @@ def test_user_can_edit_name(browser):
     page.go_to_editing_request_new_back()
     page.editing_request_from_mister_to_madam_new_back()
     page.editing_name_new_back()
-    page.editing_surename_new_back()
-    page.scroll_to_surename_and_save()
+    page.editing_surname_new_back()
+    page.scroll_to_surname_and_save()
     page.editing_data_birthday_new_back()
     page._do_after_click_timeout()
     page.click_save_new()
@@ -102,7 +102,7 @@ def test_user_can_edit_date_of_birth(browser):
     page.scroll_to_editing_adress()
     page.go_to_editing_date_of_birth()
     page.editing_day()
-    page.editing_mounths()
+    page.editing_months()
     page.editing_years()
     page.save_button_click()
     page.should_be_change_date_of_birth()
@@ -200,7 +200,7 @@ def test_checking_menu_links(browser):
     page.go_to_profile_wrapper()  # клик по иконке меню +
     page.go_to_my_data()  # переход в мои данные +
     page.checking_go_to_my_data()  # проверка перехода в мои данные работает ++
-    page.go_to_adress()  # переход в новый адресс +
+    page.go_to_address()  # переход в новый адресс +
     page.go_to_entry_and_security()  # новый вход и безопасность +
     page.go_to_profile_wrapper()  # клик по иконке меню+
     page.go_to_my_messages()  # переход в мои сообщения +

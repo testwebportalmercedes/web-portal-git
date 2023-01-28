@@ -87,7 +87,7 @@ class RegisterTest():  # вспомогательные методы для ра
         password.send_keys("1234Ntcn$$")
         self.browser.find_element(By.CSS_SELECTOR, '#saveChange').click()
 
-    def test_for_test(self):
+    def test_for_check(self):
         time.sleep(1)
         cookie_popup = self.browser.find_element(By.CSS_SELECTOR, "cmm-cookie-banner")
         cookie_form = self.browser.execute_script("return arguments[0].shadowRoot", cookie_popup)
@@ -117,7 +117,7 @@ class RegisterTest():  # вспомогательные методы для ра
             EC.element_to_be_clickable((By.XPATH, "/html/body/header/nav/div[2]/div/div/div/ul[1]/li[2]")))
         personal_menu_second.click()
 
-    def test_for_test1(self):
+    def test_for_check_1(self):
         time.sleep(2)
         iframe = self.browser.find_element(By.CSS_SELECTOR, '#upmc-cont')
         self.browser.switch_to.frame(iframe)
